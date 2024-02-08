@@ -2,7 +2,7 @@
 
 # Section 2
 # Day 1: Variables, Lists, and Print
-'''
+"""
 user_prompt = "Enter a to-do: "
 todo1 = input(user_prompt)
 todo2 = input(user_prompt)
@@ -12,7 +12,7 @@ todos = [todo1, todo2, todo3]
 print(todos)
 
 print(type(todo1))
-'''
+"""
 
 # Section 3
 # Day 2: Methods & While-Loop
@@ -22,5 +22,8 @@ todos = []
 
 while True:
     todo = input(user_prompt)
-    todos.append(todo) # append is a method
+    todos.append(todo)  # append is a method
     print(todos)
+
+# dir() to get the list of methods that help
+# help() to get description
