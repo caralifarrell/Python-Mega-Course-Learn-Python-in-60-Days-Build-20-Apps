@@ -129,17 +129,22 @@ while True:
         case 'add':
             todo = input("Enter a todo: ") + "\n"  # So it skips lines when it records in text file
 
-            file = open('todos.txt', 'r')  # Read what's inside the text file
-            todos = file.readlines()
+            file = open('files/todos.txt', 'r')  # Read what's inside the text file
+            todos = file.readlines()  # Lists are usually created from other external files like text files. This is
+            # when our list was created, and it's the same as doing todos = []
             file.close()  # Closing the file object
 
             todos.append(todo)
 
-            file = open('todos.txt', 'w')  # To store the info in a text file, file object is returned by the open
+            file = open('files/todos.txt', 'w')  # To store the info in a text file, file object is returned by the open
             # function; w for write vs r for read
             file.writelines(todos)
             file.close()
         case 'show':
+            file = open('files/todos.txt', 'r')  # Opening the text file
+            todos = file.readlines()
+            file.close()
+
             for index, item in enumerate(todos):
                 item = item.title()
                 row = f"{index + 1}-{item}"
