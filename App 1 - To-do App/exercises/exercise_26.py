@@ -1,19 +1,13 @@
 """
-Coding Exercise 6
-Open your computer IDE and place the following in a Python file:
+Coding Exercise 2
+Extend the given code so the code prints out a list containing the number of characters for each username.
 
-filenames = ['doc.txt', 'report.txt', 'presentation.txt']
+The output of your code should be as below:
 
-Then, create a program that:
-
-1. generates multiple text files by iterating over the filenames list,
-
-2. and writes the text Hello  inside each generated text file.
+[9, 11, 11]
 """
 
-filenames = ['doc2.txt', 'report2.txt', 'presentation2.txt']
+usernames = ["john 1990", "alberta1970", "magnola2000"]
 
-for filename in filenames:
-    file = open(filename, 'w')
-    file.write("Hello")
-    file.close()
+usernames = [len(username) for username in usernames]
+print(usernames)

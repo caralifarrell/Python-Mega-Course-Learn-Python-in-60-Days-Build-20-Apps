@@ -1,28 +1,11 @@
 """
-Coding Exercise 5
-Please code this exercise in your computer IDE. For this exercise, download the members.txt file attached to the
-resources. Then, create a program that:
+Coding Exercise 1
+Extend the given code (in the exercise area) so the code capitalizes all the names and surnames of the list and then prints the new list. The output of your code should be as below:
 
-1. prompts the user to enter a new member.
-
-2. adds that member to members.txt at the end of the existing members. For example, the user here has entered the member
-Solomon Right.
-
-In the above example, Solomon Right will be added to members.txt updating the content of the file to:
-
-John Smith
-Sen Lakmi
-Sono Octonot
-Solomon Right
+['John Smith', 'Jay Santi', 'Eva Kuki']
 """
-prompt = input("Please enter a new member: ")
 
-file = open("../files/members.txt", 'r')
-current_members = file.readlines()
-file.close()
+names = ["john smith", "jay santi", "eva kuki"]
+names = [name.title() for name in names]
+print(names)
 
-current_members.append(prompt)
-
-file = open('../files/members.txt', 'w')
-file.writelines(current_members)
-file.close()
