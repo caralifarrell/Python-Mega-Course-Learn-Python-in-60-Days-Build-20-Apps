@@ -167,6 +167,7 @@ print("Bye!")
 # Section 8
 # Day 7: List Comprehension and Comments
 
+"""
 while True:
     # Get user input and strip space chars from it
     user_action = input("Type add, show, edit, complete or exit: ")
@@ -211,6 +212,91 @@ while True:
         case 'complete':
             number = int(input("Number of the todo to complete: "))
             todos.pop(number - 1)
+        case 'exit':
+            break
+
+print("Bye!")
+"""
+
+# Section 9
+# With-Context Manager
+
+while True:
+    # Get user input and strip space chars from it
+    user_action = input("Type add, show, edit, complete or exit: ")
+    user_action = user_action.strip()
+
+    match user_action:
+        case 'add':
+            todo = input("Enter a todo: ") + "\n"
+
+            # file = open('files/todos.txt', 'r')
+            # todos = file.readlines()
+            # file.close()
+
+            with open('files/todos/txt','r') as file:  # Faster way to do the above without having to close the file
+                todos = file.readlines()  # Avoids problems, because it auto-closes the file
+
+            todos.append(todo)
+
+            # file = open('files/todos.txt', 'w')
+            # file.writelines(todos)
+            # file.close()
+
+            with open('files/todos.txt', 'w') as file:
+                todos = file.writelines(todos)
+
+        case 'show':
+
+            # file = open('files/todos.txt', 'r')
+            # todos = file.readlines()
+            # file.close()
+
+            with open('files/todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            new_todos = []
+
+            for index, item in enumerate(todos):
+                item = item.strip('\n')
+                row = f"{index + 1}-{item}"
+                print(row)
+
+        case 'edit':
+            number = int(input("Number of the todo to edit: "))
+            number = number - 1
+
+            # Open the file to insert it
+            with open('files/todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            # print('Here is todos existing', todos)
+
+            new_todo = input("Enter a new todo: ")
+            todos[number] = new_todo + "\n"
+
+            # print("Here is how it will be", todos)
+
+            # Write in the file
+            with open('files/todos.txt', 'w') as file:
+                todos = file.writelines(todos)
+
+        case 'complete':
+            number = int(input("Number of the todo to complete: "))
+
+            with open('files/todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            index = number - 1
+            todo_to_remove = todos[index].strip('\n')
+            todos.pop(number - 1)
+
+            with open('files/todos.txt', 'w') as file:
+                todos = file.writelines(todos)
+
+            message = f"Todo {todo_to_remove} was removed from the list."
+            print(message)
+
         case 'exit':
             break
 
